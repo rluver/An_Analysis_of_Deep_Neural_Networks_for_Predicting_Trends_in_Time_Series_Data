@@ -1,7 +1,7 @@
 from ...config.config import model_config
 
 import tensorflow as tf
-from tensorflow.keras.layers import Input, Layer, Conv1D, MaxPool1D, Dropout, Dense
+from tensorflow.keras.layers import Input, Layer, Conv1D, MaxPool1D, Dropout, Dense, Flatten
 from tensorflow.keras.models import Model
 
 class CNN(Layer):
@@ -35,7 +35,7 @@ def build_cnn(input_shape, config=model_config):
     x = input
     for i in range(config.n_cnn):
         x = CNN(name=f'cnn_layer_{i+1}')(x)
-    x = tf.reshape(x, shape=(-1, tf.reduce_prod(x.shape[1:])))
+    x = Flatten()(x)
     output = Dense(units=config.units, name='local_feature_fusion_input')(x)
     
     return Model(input, output)

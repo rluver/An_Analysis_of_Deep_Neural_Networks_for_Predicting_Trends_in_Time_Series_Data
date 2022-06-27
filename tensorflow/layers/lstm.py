@@ -25,9 +25,9 @@ class LSTM(Layer):
         return output
 
 
-def build_lstm(inputs, config=model_config):
+def build_lstm(input_shape, config=model_config):
     input = Input(
-        shape=inputs.shape[1:], 
+        shape=input_shape[1:], 
         name='historical_trend_input'
         )
 

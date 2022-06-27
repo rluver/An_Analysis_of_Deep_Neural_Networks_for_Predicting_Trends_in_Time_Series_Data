@@ -26,9 +26,9 @@ class CNN(Layer):
         return output
 
 
-def build_cnn(inputs, config=model_config):
+def build_cnn(input_shape, config=model_config):
     input = Input(
-        shape=inputs.shape[1:], 
+        shape=input_shape[1:],
         name='local_input'
         )
 

@@ -16,9 +16,9 @@ class MLP(Layer):
         return self.dense(inputs)
 
 
-def build_mlp(inputs, config=model_config):
+def build_mlp(input_shape, config=model_config):
     input = Input(
-        shape=inputs.shape[1:], 
+        shape=input_shape,
         name='feature_fusion_input'
         )
 
